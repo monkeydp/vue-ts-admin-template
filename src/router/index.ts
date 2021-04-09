@@ -177,14 +177,14 @@ const redirector = new Redirector()
 Vue.prototype.$redirector = redirector
 
 
-// router.beforeEach(async (to, from, next) => {
-//     const needAuth = !to.meta.skipAuth && !userSession.isLogged
-//     if (needAuth) {
-//         await userSession.cleanBeforeLogin()
-//         const location: RawLocation = {path: RoutePath.LOGIN}
-//         if (to.path != RoutePath.LOGIN) location.query = {from: to.fullPath}
-//         next(location)
-//     } else {
-//         next()
-//     }
-// })
+router.beforeEach(async (to, from, next) => {
+    const needAuth = !to.meta.skipAuth && !userSession.isLogged
+    if (needAuth) {
+        await userSession.cleanBeforeLogin()
+        const location: RawLocation = {path: RoutePath.LOGIN}
+        if (to.path != RoutePath.LOGIN) location.query = {from: to.fullPath}
+        next(location)
+    } else {
+        next()
+    }
+})

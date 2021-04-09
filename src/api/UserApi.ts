@@ -1,8 +1,7 @@
 import {Container, Singleton} from 'typescript-ioc'
 import BaseApi from '@/api/BaseApi'
 import User, {UserDetail} from '@/model/User'
-import {BasePqForm} from "biz-ts/src/api/Paging";
-import Paging from "biz-ts/src/api/Paging";
+import Paging, {BasePqForm} from "biz-ts/src/api/Paging";
 
 @Singleton
 export default abstract class UserApi {
@@ -26,20 +25,32 @@ class UserApiImpl extends BaseApi implements UserApi {
 
     protected urlPrefix = 'user'
 
-    login(form: LoginForm): Promise<User> {
-        return this.axios.post('login', form)
+    private mockUser = this.getMockUser()
+
+    private getMockUser() {
+        const user = new User()
+        user.name = "admin"
+        user.avatar = "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif"
+        return user
     }
 
-    logout(): Promise<void> {
-        return this.axios.post('logout')
+    async login(form: LoginForm): Promise<User> {
+        return this.mockUser
+        // return this.axios.post('login', form)
     }
 
-    info(): Promise<User> {
-        return this.axios.get('info')
+    async logout(): Promise<void> {
+        // return this.axios.post('logout')
     }
 
-    list(): Promise<Array<User>> {
-        return this.axios.get('list')
+    async info(): Promise<User> {
+        return this.mockUser
+        // return this.axios.get('info')
+    }
+
+    async list(): Promise<Array<User>> {
+        return []
+        // return this.axios.get('list')
     }
 
     async paging(form: UpqForm): Promise<Paging<User>> {

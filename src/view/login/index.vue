@@ -79,8 +79,8 @@
         private userApi!: UserApi
 
         private loginForm = {
-            account: '',
-            password: ''
+            account: 'admin',
+            password: 'admin'
         }
         private passwordType = 'password'
         private loading = false
