@@ -1,0 +1,99 @@
+/* Element Variables */
+
+// Override Element UI variables
+$--color-primary: #1890ff;
+$--color-success: #13ce66;
+$--color-warning: #ffba00;
+$--color-danger: #ff4949;
+$--color-info: #5d5d5d;
+$--button-font-weight: 400;
+$--color-text-regular: #1f2d3d;
+$--border-color-light: #dfe4ed;
+$--border-color-lighter: #e6ebf5;
+$--table-border: 1px solid #dfe6ec;
+
+// Icon font path, required
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+// Apply overrided variables in Element UI
+@import '~element-ui/packages/theme-chalk/src/index';
+
+// The :export directive is the magic sauce for webpack
+// https://mattferderer.com/use-sass-variables-in-typescript-and-javascript
+:export {
+  theme: $--color-primary;
+}
+
+.el-notification__content p {
+  text-align: left;
+}
+
+.el-notification {
+  white-space: pre !important;
+}
+
+.el-notification__group {
+  width: 100%
+}
+
+.el-notification__content {
+  overflow: auto;
+  max-height: 80vh;
+}
+
+.el-tabs__item {
+  font-size: 18px;
+}
+
+.el-collapse-item__header {
+  font-size: 16px;
+}
+
+.el-form-item__label {
+  white-space: pre-line;
+}
+
+.el-dialog__body {
+  max-height: 500px;
+  overflow: auto;
+}
+
+
+.el-input__inner, .el-input-group__append {
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 1px;
+  border-radius: 0;
+  /*outline: medium;*/
+}
+
+.el-input__inner {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.el-table th > .cell {
+  .el-input__inner {
+    padding: 0;
+  }
+
+  .el-input__prefix {
+    left: 0;
+  }
+
+  .el-input--prefix {
+    .el-input__inner {
+      padding-left: 25px !important;
+    }
+  }
+}
+
+.el-table th {
+  vertical-align: top;
+}
+
+.el-tabs__content {
+  max-height: none !important;
+  overflow: auto !important;
+}
