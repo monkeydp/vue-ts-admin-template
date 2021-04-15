@@ -11,7 +11,15 @@ function isProd() {
 module.exports = {
     devServer: {
         port: 8082,
-        proxy: isProd() ? null : process.env.VUE_APP_BACKEND_URL,
+        proxy: isProd() ? null :{
+            '/adminend': {
+                target: "http://localhost:8080",
+                changeOrigin: true,
+                pathRewrite: {
+                    // '^/adminend': 'adminend'
+                }
+            }
+        },
     },
     // lintOnSave: isDev(),
     lintOnSave: false, // 是否启用 eslint 检测
