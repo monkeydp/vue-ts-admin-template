@@ -7,7 +7,7 @@
     >
         <slot/>
         <span slot="footer">
-            <el-button @click="close()">{{$translate('cancel')}}</el-button>
+            <el-button @click="close()">{{getCancelText()}}</el-button>
             <el-button type="primary" @click="doConfirm">{{getConfirmText()}}</el-button>
         </span>
     </el-dialog>
@@ -19,8 +19,5 @@
 
     @Component({})
     export default class CreateDialog extends BaseDialog {
-        protected getConfirmText(): string {
-            return super.confirmText ?? this.$translate('confirm')
-        }
     }
 </script>

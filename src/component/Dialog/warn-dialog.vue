@@ -8,8 +8,8 @@
             <span v-if="objName!=undefined">{{$translate('confirm', getConfirmText())}} <strong>{{objName}}</strong>?</span>
             <slot v-else/>
             <span slot="footer">
-                <el-button @click="close()">{{$translate(getCancelText())}}</el-button>
-                <el-button type="warning" @click="doConfirm">{{$translate(getConfirmText())}}</el-button>
+                <el-button @click="close()">{{getCancelText()}}</el-button>
+                <el-button type="warning" @click="doConfirm">{{getConfirmText()}}</el-button>
             </span>
         </el-dialog>
     </div>

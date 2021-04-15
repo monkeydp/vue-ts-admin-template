@@ -3,12 +3,12 @@
         <el-dialog :visible.sync="visible" :title="title" :close-on-click-modal="false">
             <slot/>
             <span slot="footer">
-                <el-button @click="close()" v-if="getShowCancel()">{{$translate(getCancelText())}}</el-button>
+                <el-button @click="close()" v-if="getShowCancel()">{{getCancelText()}}</el-button>
                 <el-button
                         type="primary"
                         @click="doConfirm"
                         v-if="getShowConfirm()"
-                >{{$translate(getConfirmText())}}</el-button>
+                >{{getConfirmText()}}</el-button>
             </span>
         </el-dialog>
     </div>
@@ -22,13 +22,5 @@
     export default class ConfirmDialog extends BaseDialog {
         @Prop() protected cancelText!: string | undefined
         @Prop() protected confirmText!: string | undefined
-
-        protected getCancelText(): string {
-            return this.cancelText ?? 'cancel'
-        }
-
-        protected getConfirmText(): string {
-            return this.confirmText ?? 'confirm'
-        }
     }
 </script>
