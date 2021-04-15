@@ -7,9 +7,9 @@
     >
         <slot/>
         <span slot="footer">
-                <el-button @click="close()">{{$translate('cancel')}}</el-button>
-                <el-button type="primary" @click="doConfirm">{{getConfirmText()}}</el-button>
-            </span>
+            <el-button @click="close()">{{$translate('cancel')}}</el-button>
+            <el-button type="primary" @click="doConfirm">{{getConfirmText()}}</el-button>
+        </span>
     </el-dialog>
 </template>
 
