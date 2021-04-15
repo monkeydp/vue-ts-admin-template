@@ -26,7 +26,7 @@ abstract class BaseStorageWrapper extends StorageWrapper {
 
     get<T>(key: string): T {
         const value = this.getOrNull(key)
-        if (value == null) ierror("")
+        if (value == null) ierror(`键 ${key} 对应的值为 null`)
         return value as T
     }
 
