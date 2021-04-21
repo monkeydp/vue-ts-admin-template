@@ -161,7 +161,7 @@
     }
 </style>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .login-container {
         height: 100%;
         width: 100%;

@@ -24,7 +24,7 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .dashboard {
         &-container {
             margin: 0px;
