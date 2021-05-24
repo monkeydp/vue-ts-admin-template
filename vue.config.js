@@ -1,6 +1,6 @@
 const name = '管理后台'
 
-function isEnv(env: string) {
+function isEnv(env) {
     return process.env.NODE_ENV === env
 }
 
