@@ -50,7 +50,7 @@ enum RouteName {
     USER_DETAIL = 'user-detail',
 }
 
-const routes: Array<RouteConfig> = [
+export const routes: RouteConfig[] = [
     {
         path: '/404',
         component: () => import(/* webpackChunkName: "404" */'@/view/404.vue'),

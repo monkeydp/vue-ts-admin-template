@@ -5,7 +5,9 @@
                     name="fade-transform"
                     mode="out-in"
             >
-                <router-view :key="key"/>
+              <keep-alive :include="cachedViews">
+                <router-view :key="key" />
+              </keep-alive>
             </transition>
         </div>
     </section>
@@ -13,15 +15,20 @@
 
 <script lang="ts">
     import {Component, Vue} from 'vue-property-decorator'
+    import { TagsViewModule } from '@/store/module/TagsView'
 
     @Component({
         name: 'AppMain'
     })
     export default class extends Vue {
 
-        get key() {
-            return this.$route.path
-        }
+      get cachedViews() {
+        return TagsViewModule.cachedViews
+      }
+
+      get key() {
+        return this.$route.path
+      }
     }
 </script>
 

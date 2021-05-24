@@ -235,13 +235,14 @@ export default {
         test: '测试',
         queryBuilder: '查询构造器',
         userMange: '用户管理',
+        user: '用户',
         taskMange: '任务管理',
         userDetail: '用户详情',
         accordion: '手风琴',
         company: '企业',
         companyMange: '企业管理',
         companyDetail: '企业详情',
-        companyRegister: '注册企业'
+        companyRegister: '注册企业',
     },
     navbar: {
         logout: '退出登录',

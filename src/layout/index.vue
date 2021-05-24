@@ -9,14 +9,13 @@
                 @click="handleClickOutside"
         />
         <sidebar class="sidebar-container"/>
-        <div
-                class="main-container"
-        >
-            <div :class="{'fixed-header': true}">
-                <navbar/>
-            </div>
-            <app-main/>
+      <div class="main-container hasTagsView">
+        <div :class="{'fixed-header': true}">
+          <navbar />
+          <tags-view />
         </div>
+        <app-main />
+      </div>
     </div>
 </template>
 
@@ -24,7 +23,7 @@
     import {Component} from 'vue-property-decorator'
     import {mixins} from 'vue-class-component'
     import {appModule, DeviceType} from '@/store/module/AppModule'
-    import {AppMain, Navbar, Sidebar} from './component'
+    import {AppMain, Navbar, Sidebar, TagsView} from './component'
     import ResizeMixin from './mixin/resize'
 
     @Component({
@@ -32,7 +31,8 @@
         components: {
             AppMain,
             Navbar,
-            Sidebar
+            Sidebar,
+            TagsView,
         }
     })
     export default class extends mixins(ResizeMixin) {
@@ -146,5 +146,16 @@
         .sidebar-container {
             transition: none;
         }
+    }
+
+    .hasTagsView {
+      .app-main {
+        /* 84 = navbar + tags-view = 50 + 34 */
+        min-height: calc(100vh - 84px);
+      }
+
+      .fixed-header+.app-main {
+        padding-top: 84px;
+      }
     }
 </style>

@@ -234,6 +234,7 @@ export default {
         test: 'Test',
         queryBuilder: 'Query Builder',
         userMange: 'User Management',
+        user: 'User',
         taskMange: 'Task Management',
         userDetail: 'User Detail',
         accordion: 'accordion',
