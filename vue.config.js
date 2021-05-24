@@ -1,11 +1,11 @@
 const name = '管理后台'
 
-function isDev() {
-    return process.env.NODE_ENV === 'development'
+function isEnv(env: string) {
+    return process.env.NODE_ENV === env
 }
 
 function isProd() {
-    return process.env.NODE_ENV === 'production'
+    return isEnv('production')
 }
 
 module.exports = {
