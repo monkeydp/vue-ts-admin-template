@@ -8,9 +8,21 @@ import {BizError, isBizError} from "biz-ts/src/error/BizError";
 import {isRouterError, VueRouterErrorHandler} from '@/router/VueRouterErrorHandler';
 import {handleBatchReturn} from "@/util/HandleBatchReturn";
 import {isQuietError} from "tools-ts/src/error/QuietError";
+import Toast from "@/util/Toast";
+import {Container, Inject, Singleton} from "typescript-ioc";
 
-export default class ErrorHandler {
-    private static async handleFailResult(result: FailResult) {
+@Singleton
+export default abstract class ErrorHandler {
+
+    abstract handle(obj: object): void
+}
+
+class ErrorHandlerImpl {
+
+    @Inject
+    private toast!: Toast
+
+    private async handleFailResult(result: FailResult) {
         if (result.code == ErrorCode.USER_NOT_LOGIN) {
             await userSession.cleanAfterLogout()
             Vue.prototype.$redirector.login()
@@ -28,23 +40,23 @@ export default class ErrorHandler {
         let msg: string
         if (!_.isEmpty(result.msg)) msg = result.msg
         else msg = "<无错误信息>"
-        Vue.prototype.$message.error(msg)
+        this.toast.error(msg)
     }
 
-    private static handleError(error: Error) {
-        Vue.prototype.$message.error("未知错误")
+    private handleError(error: Error) {
+        this.toast.error("未知错误")
         throw error
     }
 
-    private static handleBizError(error: BizError) {
-        Vue.prototype.$message.error(error.message)
+    private handleBizError(error: BizError) {
+        this.toast.error(error.message)
     }
 
-    private static handleInnerError(error: InnerError) {
+    private handleInnerError(error: InnerError) {
         console.log("前端内部错误", error)
     }
 
-    static handle(obj: object) {
+    handle(obj: object) {
         if (obj instanceof FailResult) {
             this.handleFailResult(obj as FailResult)
             return
@@ -79,11 +91,15 @@ export default class ErrorHandler {
     }
 }
 
+Container.bind(ErrorHandler).to(ErrorHandlerImpl)
+
 window.addEventListener('unhandledrejection', function (event) {
     event.preventDefault()
-    ErrorHandler.handle(event.reason)
+    const handler = Container.get(ErrorHandler)
+    handler.handle(event.reason)
 });
 
 Vue.config.errorHandler = (err) => {
-    ErrorHandler.handle(err)
+    const handler = Container.get(ErrorHandler)
+    handler.handle(err)
 }

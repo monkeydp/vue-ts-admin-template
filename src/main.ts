@@ -12,6 +12,7 @@ import '@/style/index.scss'
 import '@/icon/components'
 import {appModule} from '@/store/module/AppModule';
 import '@/error/ErrorHandler'
+import '@/util/ElToast'
 
 Vue.config.productionTip = false
 
