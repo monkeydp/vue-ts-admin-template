@@ -6,7 +6,7 @@ import Paging, {BasePqForm} from "biz-ts/src/api/Paging";
 @Singleton
 export default abstract class UserApi {
 
-    abstract login(form: LoginForm): Promise<User>
+    abstract login(form: LoginForm): Promise<LoginResult>
 
     abstract logout(): Promise<void>
 
@@ -34,8 +34,8 @@ class UserApiImpl extends BaseApi implements UserApi {
         return user
     }
 
-    async login(form: LoginForm): Promise<User> {
-        return this.mockUser
+    async login(form: LoginForm): Promise<LoginResult> {
+        return new LoginResult("abc123", this.mockUser)
         // return this.axios.post('login', form)
     }
 
@@ -76,6 +76,16 @@ export class LoginForm {
     constructor(account: string, password: string) {
         this.account = account
         this.password = password
+    }
+}
+
+export class LoginResult {
+    readonly token: string
+    readonly user: User
+
+    constructor(token: string, user: User) {
+        this.token = token
+        this.user = user
     }
 }
 

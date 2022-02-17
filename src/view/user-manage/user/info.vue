@@ -36,7 +36,7 @@
 <script lang="ts">
     import {Component, Vue} from 'vue-property-decorator'
     import {Inject} from "typescript-ioc";
-    import UserApi from "@/api/UserApi";
+    import UserApi from "@/module/user/UserApi";
     import {registerWayZh, UserDetail} from "@/model/User";
     import userModule from "@/store/module/UserModule";
     import SpanNullable from "@/component/Span/span-nullable.vue";

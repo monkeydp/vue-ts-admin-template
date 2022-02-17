@@ -119,7 +119,7 @@
 
 <script lang="ts">
     import {Component, Ref, Vue} from 'vue-property-decorator'
-    import UserApi, {UpqForm} from "@/api/UserApi";
+    import UserApi, {UpqForm} from "@/module/user/UserApi";
     import {Inject} from "typescript-ioc";
     import Pagination from '@/component/Pagination/index.vue'
     import DeleteDialog from "@/component/Crud/delete-dialog.vue";

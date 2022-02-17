@@ -41,7 +41,7 @@
     import UserInfoView from "@/view/user-manage/user/info.vue";
     import userModule from "@/store/module/UserModule";
     import {Inject} from "typescript-ioc";
-    import UserApi from "@/api/UserApi";
+    import UserApi from "@/module/user/UserApi";
 
     @Component({
         components: {

@@ -59,7 +59,7 @@
     import Hamburger from '@/component/Hamburger/index.vue'
     import ErrorLog from '@/component/ErrorLog/index.vue'
     import LangSelect from '@/component/LangSelect/index.vue'
-    import UserApi from "@/api/UserApi";
+    import UserApi from "@/module/user/UserApi";
     import {Inject} from "typescript-ioc";
 
     @Component({

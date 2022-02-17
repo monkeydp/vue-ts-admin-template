@@ -1,4 +1,5 @@
 enum StorageKey {
+    TOKEN = "TOKEN",
     LOGGED_USER = "LOGGED_USER",
     USER = "USER",
     SIDEBAR = "SIDEBAR",

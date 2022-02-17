@@ -2,7 +2,7 @@ import {Action, getModule, Module, Mutation, VuexModule} from 'vuex-module-decor
 import store from '@/store'
 import User from "@/model/User";
 import {Inject} from "typescript-ioc";
-import UserApi from "@/api/UserApi";
+import UserApi from "@/module/user/UserApi";
 import {LocalStorageWrapper, StorageWrappers} from '@/storage/StorageWrapper';
 import StorageKey from "@/storage/StorageKey";
 

@@ -6,7 +6,7 @@
 <script lang="ts">
     import {Component, Vue} from 'vue-property-decorator'
     import userSession from "@/store/module/UserSession";
-    import UserApi from "@/api/UserApi";
+    import UserApi from "@/module/user/UserApi";
     import {Inject} from "typescript-ioc";
 
     @Component({})
